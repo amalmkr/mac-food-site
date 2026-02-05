@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+
+    <title>MacFood-testing</title>
+
+    <style>
+      body{
+        margin: 0%;
+        padding: 0%;
+      }
+        .nav-icon-text{
+            margin-left: 30px;
+            margin-top: -25px;
+            color: rgb(215, 33, 33);
+            transition: transform 0.4s ease-in-out;
+          
+        }
+        .nav-icon-text:hover{
+            color: yellow;
+            transform: scale(1.4);
+            
+        }
+        .pizza-button{
+          width: 130px;
+          height: 40px;
+          border-color: #fff9f5;
+          border: none;
+          position: relative;
+          border-radius: 5px;
+          
+          
+
+        }
+        .nav-bg{
+          background-color: rgb(174, 20, 20);
+          height: 60px;
+          padding-top: 10px;
+          gap: 50px;
+        }
+        .btn-bg{
+          background-color: rgb(255, 255, 255);
+
+        }
+        .btn-bg button:hover{
+          background-color: gold;
+          color: black;
+        }
+        .icon-prp{
+          color: rgb(248, 244, 244);
+          text-align: center;
+          align-items: center;
+          justify-items: center;
+          font-size: 20px;
+          height: 90px;
+          position: relative;
+          top: 120px;
+          width: 100%;
+          margin: 0%;
+          z-index: 999;
+          box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+
+        }
+
+        .icon-prp a {
+          transition: 0.2s;
+        }
+
+        .icon-prp a:hover {
+          transform: scale(1.1); 
+        }
+
+        .icon-prp a:hover i,
+        .icon-prp a:hover div {
+        color: #ffc107 !important;
+        }
+
+        
+        .main-nav{
+          height:120px;
+          border-bottom: solid 1px rgba(192, 191, 191, 0.3);
+          padding-bottom: 5px;
+          position: fixed;
+          z-index: 9999;
+          width: 100%;
+        }
+        .main-nav ul a:hover{
+          color: #ffc107;
+        }
+
+        input[type="radio"]{
+          display: none;
+        }
+        .title-line{
+          width: 60px;
+          height: 3px;
+          background: #dc3545;
+          transition:transform 0.4s ease-in-out;
+        }
+
+        .title-line:hover{
+          transform: scale(1.5);
+        }
+        
+        .category-button{
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 14px 28px;
+          background: #fff;
+          border-radius: 6px;
+          cursor: pointer;
+          font-weight: 500;
+          box-shadow: 0 0 0 1px #eee;
+          transition: 0.3s;
+        }
+        .category-button i{
+          font-size: 22px;
+          color: #dc3545;
+
+        }
+        .category-button:hover{
+          background: #ffc107;
+
+        }
+        /* active button */
+
+        /* #all:checked~.btn-area label[for="all"], */
+        #pizza:checked~.btn-area label[for="pizza"],
+        #burger:checked~.btn-area label[for="burger"],
+        #icecream:checked~.btn-area label[for="icecream"],
+        #chicken:checked~.btn-area label[for="chicken"]{
+          background: #ffc107;
+        }
+
+        /* filtering logic */
+        #pizza:checked~.foods-items.food:not(.pizza),
+        #burger:checked~.foods-items.food:not(.burger),
+        #icecream:checked~.foods-items.food:not(.icecream),
+        #chicken:checked~.foods-items.food:not(.chicken){
+          display: none;
+        }
+
+        .card{
+          transition: 0.3s;
+        }
+
+        .card:hover{
+          transform: translateY(-5px);
+          box-shadow: 0 10px 25px rgba (0,0,0,0.15);
+        }
+
+        .radio-btn-bg{
+          background-color:rgb(195, 191, 191);
+          width: 100%;
+          border-radius: 10px;
+        }
+        
+        .rounded-icon{
+          border-radius: 100%;
+          border: solid 2px rgba(55, 54, 54, 0.3);
+          width: 100px;
+          height: 100px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .divider{
+          width: 90%;
+          height: 3px;
+          background: rgba(50, 49, 49, 0.1);
+          color: white;
+        }
+        .bdb{
+          border-bottom: solid 3px rgb(143, 134, 11);
+          padding-bottom: 3px;
+          width: 30%;
+          
+
+          
+        }
+        .phone-img {
+          width: 550px;      
+          max-width: 100%;   
+           margin-top: 0;     
+          display: block;
+        }
+        .custom-shadow {
+        box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        }
+
+        ul a{
+          text-decoration: none;
+          color: rgb(176, 171, 171);
+        }
+
+        ul a:hover{
+          color: white;
+        }
+
+        .list-arrow li {
+        list-style: none;
+        position: relative;
+        padding-left: 20px;
+        } 
+
+        .list-arrow li::before {
+          content: ">";
+          position: absolute;
+          left: 0;
+          color: #aaa;        /* light grey like your screenshot */
+          font-weight: bold;
+        }
+
+        img{
+          max-width: 100%;
+          height: auto;
+        }
+
+
+    </style> 
+</head>
+
+<body>
+<div class="container-fluid">
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg nav-bg navbar-dark main-nav">
+    
+
+    <a class="navbar-brand p-5" href="#">
+        <img src="images/mac-food-logo.png">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse container-fluid" id="navbarSupportedContent" >
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-flex" >
+
+        <li class="nav-item">
+            <a class="nav-link active me-5">Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active me-5">Register</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active me-5">
+            Store Location
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active me-5">Track Order</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active me-2">Blog</a>
+        </li>
+
+      </ul>
+
+<div class="input-group w-25 me-4">
+  <input type="text" class="form-control rounded-pill ps-3 pe-5 " placeholder="Search products here">
+
+  <span class="position-absolute end-0 top-50 translate-middle-y me-3">
+      <i class="bi bi-search"></i>
+  </span>
+</div>
+
+      <ul class="navbar-nav">
+        <li class="nav-item me-2 py-1">
+            <a class="nav-link active"><i class="bi bi-person fs-3"></i></a>
+        </li>
+
+        <li class="nav-item px-1">
+            <a class="nav-link active d-flex py-0">
+                <i class="bi bi-bag fs-4 py-3"></i>
+                <div class="text-light py-0">My Cart</div>
+                
+            </a>
+        </li>
+      </ul>
+</div>
+    </div>
+  </div>
+</nav>
+</div><!----container fluid div-->
+
+<div class="container-fluid">
+<!-- ICON BAR -->
+<ul class="nav justify-content-center nav-bg nav icon-prp"  >
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">
+       <i class="fa-solid fa-pizza-slice text-light"></i>
+       <div  class="text-light">pizza</div>
+
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#"><i class="fa-solid fa-burger text-light"></i>
+      <div class="text-light fs-5">Burger</div>
+</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-light" href="#"><i class="fa-solid fa-ice-cream"></i>
+      <div class="text-light">Ice-Cream</div>
+</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-light" href="#"><i class="fa-solid fa-martini-glass"></i>
+      <div class="text-light">Cool Drinks</div>
+</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-light" href="#"><i class="ri-bowl-fill"></i>
+      <div class="text-light">Noodles</div>
+
+</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-light" href="#"><i class="fa-solid fa-drumstick-bite"></i>
+      <div class="text-light">Chicken</div>
+</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-light" href="#"><i class="fa-solid fa-bowl-food"></i>
+      <div>Salads</div>
+</a>
+  </li>
+  <li class="nav-item ">
+    <a class="nav-link text-light" href="#"><i class="fa-solid fa-hotdog"></i>
+    <div>Hot Dog</div>
+</a>
+  </li>
+
+</ul>
+ </div> <!--container-fluid div -->
+
+ <div class="container-fluid">
+<!-- WORKING CAROUSEL -->
+<div id="carouselExampleAutoplaying" class="carousel slide py-5" data-bs-ride="carousel">
+
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="images/main-banner-1-1903x880.jpg" class="d-block w-100">
+    </div>
+
+    <div class="carousel-item">
+      <img src="images/main-banner-2-1903x880.jpg" class="d-block w-100">
+    </div>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+<div class="card-group container-fluid d-flex py-5">
+
+  <div class="card me-3">
+    <div class="container-fluid d-block "></div>
+    <img src="images/cms-banner-1.jpg" class="card-img-top w-100" alt="..." >
+  </div>
+  <div class="card me-3">
+    <div class="container-auto "></div>
+    <img src="images/cms-banner-2.jpg" class="card-img-top w-100" alt="...">
+  </div>
+  <div class="card me-3">
+    <div class="container-auto"></div>
+    <img src="images/cms-banner-3.jpg" class="card-img-top w-100" alt="...">
+  </div>
+  <div class="card me-3">
+    <div class="container-auto"></div>
+    <img src="images/cms-banner-4.jpg" class="card-img-top w-100" alt="...">
+  </div>
+</div>
+</div> <!--container-fluid -->
+
+<div class="container py-5 text-center radio-btn-bg w-100 h-75">
+  <h2 class="mb-3">Todays special</h2>
+  <div class="title-line mx-auto mb-4 "></div>
+
+  <!-- radiioo -->
+<input type="radio" name="food" id="all" checked>
+<input type="radio" name="food" id="pizza" >
+<input type="radio" name="food" id="burger" >
+<input type="radio" name="food" id="icecream">
+<input type="radio" name="food" id="chicken">
+<!-- buttons -->
+<div class="btn-area d-flex justify-content-center gap-4 flex-wrap mb-5">
+  <label for="pizza" class="category-button">
+    <i class="fa-solid fa-pizza-slice"></i>pizza
+  </label>
+<label for="burger" class="category-button">
+  <i class="fa-solid fa-burger"></i>Burger
+</label>
+<label for="icecream" class="category-button">
+  <i class="fa-solid fa-ice-cream"></i>icecream
+</label>
+<label for="chicken" class="category-button">
+  <i class="fa-solid fa-drumstick-bite"></i>chicken
+</label>
+</div>
+<!-- food cards -->
+<div class="row g-4 foods-items">
+
+  <!-- pizza -->
+<div class="col-md-3 food pizza">
+  <div class="card ">
+    <img src="/images/pizza 1.jpg" class="card-img-top">
+    <div class="card-body text-center">
+      <h5>gynnascar pizza</h5>
+      <p class="text-danger fw-bold">$20</p>
+    </div> 
+  </div>
+</div>
+
+<div class="col-md-3 food pizza">
+  <div class="card ">
+    <img src="/images/pizza 2.jpg" class="card-img-top">
+    <div class="card-body text-center">
+      <h5>pepproni pizza</h5>
+      <p class="text-danger fw-bold">$20</p>
+    </div> 
+  </div>
+</div>
+
+<div class="col-md-3 food pizza">
+  <div class="card">
+    <img src="/images/pizza 3.jpg" class="card-img-top">
+    <div class="card-body text-center">
+      <h5>madagaskar pizza</h5>
+      <p class="text-danger fw-bold">$20</p>
+    </div> 
+  </div>
+</div>
+
+<div class="col-md-3 food pizza">
+  <div class="card">
+    <img src="/images/pizza 4.jpg" class="card-img-top">
+    <div class="card-body text-center">
+      <h5>ambaddie  pizza</h5>
+      <p class="text-danger fw-bold">$20</p>
+    </div> 
+  </div>
+</div>
+
+<!-- burger -->
+ <!-- main div  --> <div class="col-md-3 food burger">
+  <div class="card">
+    <img src="/images/burger 1.jpg" class="card-img-top">
+    <div class="card-body">
+      <h5>veg Burger</h5>
+      <p class="text-danger fw-500">$99</p>
+    </div>
+  </div>
+ </div> <!--main div close-->
+ 
+ <!-- main div  --> <div class="col-md-3 food burger">
+  <div class="card">
+    <img src="/images/burger 2.jpg" class="card-img-top">
+      <div class="card-body">
+        <h5>veg Burger</h5>
+        <p class="text-danger fw-500">$99</p>
+      </div>
+    </div>
+ </div> <!--main div close-->
+ 
+ <!-- main div  --> <div class="col-md-3 food burger">
+  <div class="card">
+    <img src="/images/burger 3.jpg" class="card-img-top">
+      <div class="card-body">
+         <h5>veg Burger</h5>
+          <p class="text-danger fw-500">$99</p>
+    </div>
+  </div>
+ </div> <!--main div close-->
+ 
+ <!-- main div  --> <div class="col-md-3 food burger">
+  <div class="card">
+    <img src="/images/pizza 6.jpg" class="card-img-top">
+      <div class="card-body">
+        <h5>veg Burger</h5>
+        <p class="text-danger fw-500">$99</p>
+    </div>
+  </div>
+ </div> <!--main div close-->
+
+ <!-- icecream -->
+<div class="col-md-3 food icecream">
+  <div class="card">
+    <img src="/images/ice cream 1.jpg" class="card-img-top">
+    <div class="card-body">
+      <h5>purple ice cream</h5>
+      <p class="text-danger fw-500">$79</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-3 food icecream">
+  <div class="card">
+    <img src="/images/ice cream 2.webp" class="card-img-top">
+    <div class="card-body">
+      <h5>vanila ice cream</h5>
+      <p class="text-danger fw-500">$79</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-3 food icecream">
+  <div class="card">
+    <img src="/images/pizza 8.jpg" class="card-img-top">
+    <div class="card-body">
+      <h5>pink ice cream</h5>
+      <p class="text-danger fw-500">$39</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-3 food icecream">
+  <div class="card">
+    <img src="/images/chicken 3.jpg" class="card-img-top">
+    <div class="card-body">
+      <h5>jimikki kammal ice cream</h5>
+      <p class="text-danger fw-500">$59</p>
+    </div>
+  </div>
+</div>
+
+<!-- chicken -->
+<div class="col-md-3 food chicken">
+  <div class="card">
+    <img src="/images/pizza 8.jpg" class="card-img-top">
+    <div>
+      <h5>chicken kunji kozhi</h5>
+      <p class="text-danger fw-500">$230</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-3 food chicken">
+  <div class="card">
+    <img src="/images/chicken 3.jpg" class="card-img-top">
+    <div>
+      <h5>chicken thala kozhi</h5>
+      <p class="text-danger fw-500">$880</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-3 food chicken">
+  <div class="card">
+    <img src="/images/chicken 2.jpg" class="card-img-top">
+    <div>
+      <h5>chicken lolipop</h5>
+      <p class="text-danger fw-500">$90</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-3 food chicken">
+  <div class="card">
+    <img src="/images/chicken 4.jpg" class="card-img-top">
+    <div>
+      <h5>chicken niggets</h5>
+      <p class="text-danger fw-500">$330</p>
+    </div>
+  </div>
+</div>
+
+</div> <!-- food card div cl -->
+
+
+
+
+ </div><!-- main div -->
+<div class="container mt-5">
+  <div class="row g-">
+
+    <div class="col-12 col-md-6 col-lg-3">
+      <i class="bi bi-truck fs-1 rounded-icon"></i>
+      <h5 class="mt-2">Fast Free Delivery</h5>
+      <p class="m-0">fastest delivery in town</p>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-3">
+      <i class="bi bi-box-seam fs-1 rounded-icon"></i>
+      <h5 class="mt-2">Return & Exchange Policy</h5>
+      <p class="m-0">best return policy</p>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-3">
+      <i class="bi bi-chat-dots fs-1 rounded-icon"></i>
+      <h5 class="mt-2">Best Online Customer Care</h5>
+      <p class="m-0">Fast Replying Customer Care</p>
+    </div>
+
+    <div class="col-12 col-md-6 col-lg-3">
+      <i class="bi bi-gift fs-1 rounded-icon"></i>
+      <h5 class="mt-2">Best Gift Voucher</h5>
+      <p class="m-0">Worthy Gift Vouchers</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider container-fluid mt-5">.</div>
+<div class="container-fluid text-center mt-4 bdb"><h1 class="py-3 fw-500 fs-1">Costumer Feedback</h1></div>
+
+<!-- carousel costumer feed back -->
+<div id="multiCardCarousel" class="carousel slide py-5" data-bs-ride="carousel">
+  <div class="carousel-inner">
+
+    <!-- SLIDE 1 -->
+    <div class="carousel-item active">
+      <div class="d-flex justify-content-center gap-5">
+
+        <div class="card mx-3 shadow-lg" style="width: 14rem;">
+          <img src="/images/costumer chechi 1.png" class="card-img-top w-50 mx-auto" style="border-radius: 50%; border: solid 1px rgba(0, 0, 0, 0.1);">
+          <div class="card-body text-center">
+            <p>"super food."</p>
+            <h5>Nomitha sajeevan</h5>
+          </div>
+        </div>
+
+        <div class="card mx-3 shadow-lg" style="width: 14rem;">
+          <img src="/images/costumer chettan 1.png" class="card-img-top w-50 mx-auto" style="border-radius: 50%;border: solid 1px rgba(0, 0, 0, 0.1);">
+          <div class="card-body text-center">
+            <p>"absolute food 1..!"</p>
+            <h5>Athul p.p</h5>
+          </div>
+        </div>
+
+        <div class="card mx-3 shadow-lg" style="width: 14rem;" style="border-radius: 50%;border: solid 1px rgba(0, 0, 0, 0.1);">
+          <img src="/images/customer chechi 2.png" class="card-img-top w-50 mx-auto">
+          <div class="card-body text-center">
+            <p>"pwoli saanam."</p>
+            <h5>Paandiyamma</h5>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SLIDE 2 -->
+    <div class="carousel-item">
+      <div class="d-flex row justify-content-center gap-5">
+
+        <div class="card mx-3 shadow-lg" style="width: 14rem;">
+          <img src="/images/costumer chettan 2.png" class="card-img-top mx-auto w-50" style="border-radius: 50%;border: solid 1px rgba(0, 0, 0, 0.1);">
+          <div class="card-body text-center">
+            <p>"delicious food."</p>
+            <h5>Abhilash tommy</h5>
+          </div>
+        </div>
+
+        <div class="card mx-3 shadow-lg" style="width: 14rem;">
+          <img src="/images/customer chechi 2.png" class="card-img-top mx-auto w-50" style="border-radius: 50%;border: solid 1px rgba(0, 0, 0, 0.1);">
+          <div class="card-body text-center">
+            <p>"amazing taste!"</p>
+            <h5>Silaniga</h5>
+          </div>
+        </div>
+
+        <div class="card mx-3 shadow-lg" style="width: 14rem;">
+          <img src="/images/costumer chechi 1.png" class="card-img-top mx-auto w-50"  style="border-radius: 50%;border: solid 1px rgba(0, 0, 0, 0.1);"">
+          <div class="card-body text-center">
+            <p>"highly recommended".</p>
+            <h5>Aparichithan</h5>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#multiCardCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#multiCardCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+<div class="container-fluid d-flex align-items-center justify-content-between py-5" 
+     style="background-color:#dc3545; height: 530px;">
+
+  <!-- LEFT IMAGE -->
+  <div class="d-flex align-items-center">
+    <img src="/images/mac phone.png" width="1000" class="img-fluid" 
+         style="display:block;">
+  </div>
+
+  <!-- RIGHT TEXT + FORM -->
+  <div class="text-white me-5 ">
+    <h3>Download our App to</h3>
+    <h1 class="fw-bold py-2">Get Exclusive Discounts</h1>
+    <h5 class="py-3">We will send the link to download</h5>
+
+    <form class="d-flex justify-content-end mt-5">
+      <input type="email" class="form-control w-100 " placeholder="Enter your email" style="border-radius: 0%;height: 45px;">
+      <button class="btn btn-warning" style="border-radius: 0%;">Subscribe</button>
+    </form>
+    <div class="d-flex m-4">
+      <img src="/images/appstore.png" class="w-25 me-5" style="height: 44px;width: 100px;">
+      <img src="/images/playstore.png" class="w-25 mt-2" style="height: 30px;">
+    </div>
+  </div>
+</div>
+<footer class="footer py-5" style="background-color: black;color: rgb(122, 117, 117); height: 100%;margin-bottom: 0% overflow-auto;">
+  <div class="container">
+    <div class="row">
+
+      <!-- Store Information -->
+      <div class="col-md-3 mb-4">
+        <h5>Store Information</h5>
+        <p>Macfood - Food Store<br>
+          507-Union Trade ipsum Doler,<br>
+          United States
+        </p>
+        <p>Phone: 000-000-0000</p>
+        <p>Email: sales@yourcompany.com</p>
+          <!--icons-->
+        <div class="d-flex gap-3 mt-3">
+          <i class="bi bi-facebook fs-4"></i>
+          <i class="bi bi-x fs-4"></i>
+          <i class="bi bi-rss fs-4"></i>
+          <i class="bi bi-google fs-4"></i>
+          <i class="bi bi-instagram fs-4"></i>
+        </div>
+      </div>
+
+      <!-- Information -->
+      <div class="col-md-3 mb-4">
+        <h5>Information</h5>
+        <ul class="list-unstyled list-arrow" style="list-style-type:square;">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Delivery Information</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Site Map</a></li>
+        </ul>
+      </div>
+
+      <!-- My Account -->
+      <div class="col-md-3 mb-4">
+        <h5>My Account</h5>
+        <ul class="list-unstyled list-arrow">
+          <li><a href="#">My Account</a></li>
+          <li><a href="#">Order History</a></li>
+          <li><a href="#">Wish List</a></li>
+          <li><a href="#">Newsletter</a></li>
+          <li><a href="#">Returns</a></li>
+        </ul>
+      </div>
+
+      <!-- Blog -->
+      <div class="col-md-3 mb-4">
+        <h5>From The Blog</h5>
+
+        <!-- Blog Post 1 -->
+        <div class="d-flex mb-3">
+          <img src="/images/blog-3-1041x1097.jpg" class="blog-img me-3 w-25">
+          <div>
+            <small class="text-warning fw-bold">22 August</small>
+            <p class="mb-0">There Are Many Variations Of Passages Of Lorem Ipsum Available</p>
+          </div>
+        </div>
+
+        <!-- Blog Post 2 -->
+        <div class="d-flex">
+          <img src="/images/blog-6-1041x1097.jpg" class="blog-img me-3 w-25">
+          <div>
+            <small class="text-warning fw-bold">17 August</small>
+            <p class="mb-0">The Standard Chunk Of Lorem Ipsum Used Since The 1500s</p>
+          </div>
+          
+        </div>
+
+      </div>
+    </div>
+  
+  </div>
+  <hr class="w-100">
+  <div class="ms-5">Powered by <a>OpenCart MacFood - food store &nbsp; 
+    <i class="bi bi-c-circle"></i> &nbsp;2026  </a></div>
+</footer>
+
+<!-- Bootstrap JS (Correct one) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
