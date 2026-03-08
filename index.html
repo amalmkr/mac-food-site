@@ -51,7 +51,109 @@
       .category-button:hover{
         background: #ffc107;
       }
+        /* #all:checked~.btn-area label[for="all"], */
+        #pizza:checked~.btn-area label[for="pizza"],
+        #burger:checked~.btn-area label[for="burger"],
+        #icecream:checked~.btn-area label[for="icecream"],
+        #chicken:checked~.btn-area label[for="chicken"]{
+          background: #ffc107;
+        }
 
+    
+
+        /* filtering logic */
+        #pizza:checked~.foods-items.food:not(.pizza),
+        #burger:checked~.foods-items.food:not(.burger),
+        #icecream:checked~.foods-items.food:not(.icecream),
+        #chicken:checked~.foods-items.food:not(.chicken){
+          display: none;
+        }
+
+      .card{
+        transition: 0.3s;
+      }
+
+      .card:hover{
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+      
+      .radio-btn-bg{
+        width: 100%;
+        border-radius: 5px;
+        background-color:rgb(195, 191, 191);
+      }
+.product-card{
+    background-color: #ffff;
+    width: 300px;
+    /* height: 300px; */
+    transition: transfrom 0.3s ease ;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+
+}
+
+.product-card:hover{
+    transform: translateY(-6px);
+}
+
+.main-img{
+    width: 100%;
+    height: 200px;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .main-img:hover{
+    transform: scale(1.05);
+}
+
+.product-contents{
+    padding: 18px;
+}
+.product-heading{
+    margin: 0 0 8px;
+    font-size: 18px;
+}
+.product-rate{
+    color: green;
+    margin: 0 0 8px;
+    font-weight: bold;
+    font-size: 16px;
+}
+.product-details{
+    font-size: 14px;
+    color:#555;
+    border-bottom: 15px;
+    line-height: 1.5;
+}
+.add-to-cart{
+    width: 100%;
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3 ease;
+    border: none;
+    font-size: 15px;
+}
+.add-to-cart:hover,.add-to-cart:focus{
+    background-color: greenyellow;
+    outline: none;
+}
+
+@media(max-width:400px){
+    .product-card{
+        width: 90%;
+    }
+}
+.page-wrapper{
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    display: flex;
+}
       
     
       </style>
@@ -168,10 +270,10 @@
       </div>
     </div>
   </div>
-
-<div class="container text-center radio-btn-bg w-100 h-75">
-  <h2 class="mt-5">Today Special</h2>
-  <div class="text-line mx-auto "></div>
+<div class="radio-btn-bg mb-5 pb-5">
+<div class="container text-center w-100 h-75">
+  <h2 class="mt-5 pt-5">Today Special</h2>
+  <div class="title-line mx-auto mt-3"></div>
 
   <!--radio-->
   <input type="radio" name="food" id="all" checked>
@@ -196,6 +298,192 @@
     </label>
   </div>
 </div>
+<!--food card-->
+<div class="row g-4 food-items ms-5 ">
+          <div class="product-card col-md-3 food pizza ms-5">
+            <img src="images/pizza-1.jpg" class="main-img">
+            <div class="product-contents">
+                <h2 class="product-heading">PIZZA</h2>
+                <p class="product-rate">$6</p>
+                <p class="produuct-details">
+                    best pizza in the market
+                </p>
+                <button class="add-to-cart" area-labrl="add product">Add  to cart</button>
+            </div>
+        </div>
+          <div class="product-card col-md-3 food pizza ms-5">
+            <img src="images/pizza-4.jpg" class="main-img">
+            <div class="product-contents">
+                <h2 class="product-heading">PIZZA rumali</h2>
+                <p class="product-rate">$8</p>
+                <p class="produuct-details">
+                    best pizza in the rumali
+                </p>
+                <button class="add-to-cart" area-labrl="add product">Add  to cart</button>
+            </div>
+        </div>
+          <div class="product-card col-md-3 food pizza ms-5">
+            <img src="images/pizza-3.jpg" class="main-img">
+            <div class="product-contents">
+                <h2 class="product-heading">PIZZA africa</h2>
+                <p class="product-rate">$9</p>
+                <p class="produuct-details">
+                    best pizza in africa
+                </p>
+                <button class="add-to-cart" area-labrl="add product">Add  to cart</button>
+            </div>
+        </div>
+          <div class="product-card col-md-3 food pizza ms-5">
+            <img src="images/pizza-2.jpg" class="main-img">
+            <div class="product-contents">
+                <h2 class="product-heading">PIZZA kattakada</h2>
+                <p class="product-rate">$2</p>
+                <p class="produuct-details">
+                    only kattakada pizza in world
+                </p>
+                <button class="add-to-cart" area-labrl="add product">Add  to cart</button>
+            </div>
+        </div>
+        <!--burger-->
+          <div class="product-card col-md-3 food burger ms-5">
+            <img src="images/burger-1.jpg" class="main-img">
+            <div class="product-contents">
+                <h2 class="product-heading">chicken burger</h2>
+                <p class="product-rate">$3</p>
+                <p class="produuct-details">
+                    best broiler chicken burger
+                </p>
+                <button class="add-to-cart" area-labrl="add product">Add  to cart</button>
+            </div>
+        </div>
+          <div class="product-card col-md-3 food burger ms-5">
+            <img src="images/burger-2.jpg" class="main-img">
+            <div class="product-contents">
+                <h2 class="product-heading">veg burger</h2>
+                <p class="product-rate">$1</p>
+                <p class="produuct-details">
+                    best virgin veg burger
+                </p>
+                <button class="add-to-cart" area-labrl="add product">Add  to cart</button>
+            </div>
+        </div>
+
+          <div class="product-card col-md-3 food pizza ms-5">
+            <img src="images/burger-3.jpg" class="main-img">
+            <div class="product-contents">
+                <h2 class="product-heading">Beef burger</h2>
+                <p class="product-rate">$9</p>
+                <p class="produuct-details">
+                    only best veg burger in the world
+                </p>
+                <button class="add-to-cart" area-labrl="add product">Add  to cart</button>
+            </div>
+        </div>
+          <div class="product-card col-md-3 food burger ms-5">
+            <img src="images/burger-4.jpg" class="main-img">
+            <div class="product-contents">
+                <h2 class="product-heading">mixed burger</h2>
+                <p class="product-rate">$11</p>
+                <p class="produuct-details">
+                    best all in one burger
+                </p>
+                <button class="add-to-cart" area-labrl="add product">Add  to cart</button>
+            </div>
+        </div>
+        <!--chicken-->
+          <div class="product-card col-md-3 food chicken ms-5">
+            <img src="images/chicken-1.jpg" class="main-img">
+            <div class="product-contents">
+                <h2 class="product-heading">chicken chest</h2>
+                <p class="product-rate">$5</p>
+                <p class="produuct-details">
+                    best broiler chicken chest piece
+                </p>
+                <button class="add-to-cart" area-labrl="add product">Add  to cart</button>
+            </div>
+        </div>
+          <div class="product-card col-md-3 food chicken ms-5">
+            <img src="images/chicken-2.jpg" class="main-img">
+            <div class="product-contents">
+                <h2 class="product-heading">chicken leg piece</h2>
+                <p class="product-rate">$3</p>
+                <p class="produuct-details">
+                    best broiler chicken leg piece
+                </p>
+                <button class="add-to-cart" area-labrl="add product">Add  to cart</button>
+            </div>
+        </div>
+          <div class="product-card col-md-3 food chicken ms-5">
+            <img src="images/chicken-3.jpg" class="main-img">
+            <div class="product-contents">
+                <h2 class="product-heading">chicken tikka</h2>
+                <p class="product-rate">$8</p>
+                <p class="produuct-details">
+                    best delicious chicken tikka 
+                </p>
+                <button class="add-to-cart" area-labrl="add product">Add  to cart</button>
+            </div>
+        </div>
+          <div class="product-card col-md-3 food chicken ms-5">
+            <img src="images/chicken-4.jpg" class="main-img">
+            <div class="product-contents">
+                <h2 class="product-heading">chicken 65</h2>
+                <p class="product-rate">$10</p>
+                <p class="produuct-details">
+                    best chicken 65
+                </p>
+                <button class="add-to-cart" area-labrl="add product">Add  to cart</button>
+            </div>
+        </div>
+        <!--ice cream-->
+          <div class="product-card col-md-3 food icecream ms-5">
+            <img src="images/ice-cream-1.jpg" class="main-img">
+            <div class="product-contents">
+                <h2 class="product-heading">vanilla ice cream</h2>
+                <p class="product-rate">$3</p>
+                <p class="produuct-details">
+                    ice cold vanilla
+                </p>
+                <button class="add-to-cart" area-labrl="add product">Add  to cart</button>
+            </div>
+        </div>
+          <div class="product-card col-md-3 food icecream ms-5">
+            <img src="images/ice-cream-2.webp" class="main-img">
+            <div class="product-contents">
+                <h2 class="product-heading">chocalte ice cream</h2>
+                <p class="product-rate">$5</p>
+                <p class="produuct-details">
+                    ice scotch chocolate
+                </p>
+                <button class="add-to-cart" area-labrl="add product">Add  to cart</button>
+            </div>
+        </div>
+          <div class="product-card col-md-3 food icecream ms-5">
+            <img src="images/ice-cream-3.webp" class="main-img">
+            <div class="product-contents">
+                <h2 class="product-heading">avacado ice cream</h2>
+                <p class="product-rate">$7</p>
+                <p class="produuct-details">
+                    green chill avacado
+                </p>
+                <button class="add-to-cart" area-labrl="add product">Add  to cart</button>
+            </div>
+        </div>
+          <div class="product-card col-md-3 food icecream ms-5">
+            <img src="images/ice-cream-4.webp" class="main-img">
+            <div class="product-contents">
+                <h2 class="product-heading">red velvet ice cream</h2>
+                <p class="product-rate">$3</p>
+                <p class="produuct-details">
+                    premium crimson red velvet
+                </p>
+                <button class="add-to-cart" area-labrl="add product">Add  to cart</button>
+            </div>
+        </div>
+<!--food card div ending tag-->
+</div>
+</div> <!--radio btn bg close div-->
+
 
     
 
